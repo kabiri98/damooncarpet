@@ -23,23 +23,15 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
-        if($this->method() == 'POST') {
+        
             return [
                 'name' => 'required|max:250',
-                'code' => 'required|max:250',
+                'code' => 'required|unique:products|max:250',
                 'description' => 'required',
+                'price'=> 'required|numeric',
                 'images' => 'required|mimes:jpeg,png,jpg,jfif,bmp',
                 'tags' => 'required',
             ];
-        }
-
-        return [
-            'name' => 'required|max:250',
-            'code' => 'required|max:250',
-            'description' => 'required',
-            'tags' => 'required',
-        ];
-
     
     }
 }

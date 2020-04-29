@@ -9,9 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use Sluggable;
-    protected $fillable=[
-        'name', 'code','price', 'images','description'
-    ];
+
     protected $guarded = [];
 
     protected $casts = [
@@ -31,8 +29,10 @@ class Product extends Model
             ]
         ];
     }
+
     public function path()
     {
-        return "admin//product/$this->slug";
+        return "/Product/$this->slug";
     }
+
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
+use App\Http\Requests\ProductRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 
 class AdminController extends Controller
 {
@@ -19,13 +21,27 @@ class AdminController extends Controller
 
         $file = $file->move(public_path($imagePath) , $filename);
 
-        // $sizes = ["300" , "600" , "900"];
-        // $url['images'] = $this->resize($file->getRealPath() , $sizes , $imagePath , $filename);
-        // //bold picture//
-        // $url['thumb'] = $url['images'][$sizes[0]];
+        $sizes = ["300" , "600" , "900"];
+        $url['images'] = $this->resize($file->getRealPath() , $sizes , $imagePath , $filename);
+        //image first is image first select
+        $url['thumb'] = $url['images'][$sizes[0]];
 
-        // return $url;
-        // dd($url);
+        return $url;
+      
+    }
+
+    private function resize($path , $sizes , $imagePath , $filename)
+    {
+        $images['original'] = $imagePath . $filename;
+        foreach ($sizes as $size) {
+            $images[$size] = $imagePath . "{$size}_" . $filename;
+
+            Image::make($path)->resize($size, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path($images[$size]));
+        }
+
+        return $images;
     }
 
 }

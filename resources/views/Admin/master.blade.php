@@ -9,6 +9,7 @@
 
  
   @include('Admin.sections.sidebar')
+
  @yield('content')
 
  

@@ -1,5 +1,14 @@
 @extends('Admin.master')
 
+@section('script')
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<script>
+  CKEDITOR.replace('description',{
+    filebrowserUploadUrl:'/admin/panel/upload-image',
+filebrowserImageUploadUrl:'/admin/panel/upload-image',
+  });
+</script>
+@endsection
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -7,12 +16,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+           
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,9 +36,9 @@
           <div class="col-lg-12 col-12">
             <!-- small box -->
             <div class="page-header head-section text-center">
-            <h2>محصولات</h2>
+            <h2>اضافه کردن محصول جدید</h2>
         </div>
-        <form class="form-horizontal" action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="{{ route('Product.store') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 @include('Admin.sections.errors')
             <div class="form-group">
@@ -43,6 +51,12 @@
                 <div class="col-sm-12">
                     <label for="code" class="control-label">کد محصول</label>
                     <input type="text" class="form-control" name="code" id="code" placeholder="کد محصول را وارد کنید" value="{{ old('code') }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label for="price" class="control-label"> قیمت</label>
+                    <input type="int" class="form-control" name="price" id="price" placeholder="قیمت محصول را وارد کنید" value="{{ old('price') }}">
                 </div>
             </div>
             <div class="form-group">

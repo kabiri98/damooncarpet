@@ -26,36 +26,60 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-               داشبورد
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
+           
             <ul class="nav nav-treeview">
+              
+          @can('show-product')
               <li class="nav-item">
-                <a href="/admin/product" class="nav-link active">
+                <a href="/admin/products" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>مدیریت کالاها</p>
                 </a>
               </li>
+           @endcan
+           @can('show-users')
               <li class="nav-item">
-                <a href="/admin/user" class="nav-link">
+             
+                <a href="/admin/users" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>مدیریت کاربران</p>
                 </a>
+              
               </li>
-              <!-- <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li> -->
+         @endcan
+             
             </ul>
           </li>
+         @can('show-comment')
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+               نظرات 
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+           
+            <ul class="nav nav-treeview">
+           
+              <li class="nav-item">
+                <a href="pages/UI/general.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>نظرات تاییده شده</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/UI/icons.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>نظرات تایید نشده</p>
+                </a>
+              </li>
+             
+            </ul>
          
-          
+            </ul>
+          </li>
+          @endcan
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -111,34 +135,9 @@
               
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-               نظرات 
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>نظرات تاییده شده</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>نظرات تایید نشده</p>
-                </a>
-              </li>
-             
-            </ul>
-          </li>
-
-                       
-            </ul>
-          </li>
+      
+          
+        
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>

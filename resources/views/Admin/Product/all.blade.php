@@ -7,12 +7,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,39 +25,52 @@
           <div class="col-lg-12 col-12">
             <!-- small box -->
             <div class="page-header head-section text-center">
-            <h2>محصولات</h2>
+            <h2 class="mt-2">محصولات</h2>
         </div>
-        <a href="{{ route('product.create') }}" class="btn btn-sm btn-primary ">اضافه کردن محصول جدید</a>
-        <div class="table-responsive pt-3">
+        <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary mb-3 ">اضافه کردن محصول جدید</a>
+        <div class="table-responsive pt-2.5">
+        @foreach (['danger', 'warning', 'success', 'info'] as $key)
+ @if(Session::has($key))
+     <p class="alert alert-{{ $key }}">{{ Session::get($key) }}</p>
+ @endif
+@endforeach
             <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th>نام محصول</th>
                     <th>کد محصول</th>
+                    <th>قیمت محصول</th>
                     <th>تعداد نظرات</th>
                     <th>تعداد بازدید</th>
+                    <th>تعداد فروخته شده</th>
                     <th>موجودی انبار</th>
-                    <th>تنظیمات</th>
+                    <th>به روزرسانی</th>
+                    <th>حذف</th>
                 </tr>
                 </thead>
                 <tbody>
+               
                 @foreach($products as $product)
                     <tr>
                         <td><a href="{{ $product->path() }}">{{ $product->name }}</a></td>
                         <td>{{ $product->code }}</td>
+                        <td>{{ $product->price }}</td>
                         <td>{{ $product->commentCount }}</td>
                         <td>{{ $product->viewCount }}</td>
+                        <td>{{ $product->sailedCount }}</td>
                         <td>{{ $product->stockCount }}</td>
-                        <td>
-                            <form action="{{ route('products.destroy'  , ['id' => $product->id]) }}" method="post">
-                                {{ method_field('delete') }}
-                                {{ csrf_field() }}
-                                <div class="btn-group btn-group-xs">
-                                    <a href="{{ route('products.edit' , ['id' => $product->id]) }}"  class="btn btn-primary">ویرایش</a>
-                                    <button type="submit" class="btn btn-danger">حذف</button>
-                                </div>
-                            </form>
+                        <td><a href="{{route ('products.edit', [$product])}}"  >
+                        <button class="btn btn-primary mt-2.9"><i class="fas fa-check"></i></button></a>
                         </td>
+                        <td>
+                        <form action="{{route ('products.destroy', [$product])}}" method="post" class="nav-link"> 
+                        {{ method_field('delete') }}
+                                {{ csrf_field() }}    
+                        <button type="submit" class="btn btn-danger "><i class="fas fa-times"></i></button>
+                       
+                        </form>
+                        </td>
+                       
                     </tr>
                 @endforeach
                 </tbody>

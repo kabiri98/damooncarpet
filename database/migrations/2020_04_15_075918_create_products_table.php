@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('price',10);
             $table->integer('viewCount')->default(0);
             $table->integer('stockCount')->default(0);
+            $table->integer('sailedCount')->default(0);
             $table->integer('commentCount')->default(0);
             $table->timestamps();
         });

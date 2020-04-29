@@ -145,6 +145,8 @@ return array(
         'fileUrl' => 'آدرس فایل',
         'enSlug' => 'نامک انگلیسی',
         'percent' => 'درصد',
-        'images' => 'تصویر'
+        'images' => 'تصویر',
+        'permission_id'=>'شناسه دسترسی',
+        'label'=>'توضیحات'
     ),
 );

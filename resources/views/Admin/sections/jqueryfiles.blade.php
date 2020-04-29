@@ -1,3 +1,4 @@
+@yield('script')
 <script src="{{asset('Admin/plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('Admin/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
@@ -25,9 +26,16 @@
 <script src="{{asset('Admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- overlayScrollbars -->
 <script src="{{asset('Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<!-- <for multiple dropdown> -->
+<script src="{{asset('Admin/plugins/BsMultiSelect/BsMultiSelect.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('Admin/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('Admin/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('Admin/dist/js/demo.js')}}"></script>
+<script src="{{asset('Admin/dist/js/bootstrap-select.min.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
